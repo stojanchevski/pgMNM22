@@ -23,17 +23,17 @@
 </style>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <title>Blog Home - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}"/>
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Home - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 </head>
-<body bgcolor="gray">
+<body>
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark">
     <div class="container">
@@ -166,7 +166,7 @@
                 <h2>PDF files</h2>
                 <ul>
                     {% for pdf_file in pdf_files %}
-                    <li><a href="{{ pdf_file.file.url }}" target="_blank">{{ pdf_file.title. }}</a></li>
+                    <li><a href="{{ pdf_file.file.url }}" target="_blank">{{ pdf_file.title }}</a></li>
                     {% empty %}
                     <li>No PDF files found.</li>
                     {% endfor %}
@@ -180,6 +180,7 @@
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Македонија на МАКЕДОНЦИТЕ 2023</p>
     </div>
 </footer>
+href="{% static 'assets/favicon.ico' %}"
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

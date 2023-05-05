@@ -15,7 +15,7 @@ articles = []
 
 conn = psycopg2.connect(
     host="localhost",
-    database="test1",
+    database="mnm1",
     user="test1",
     password="admin"
 )
@@ -24,6 +24,7 @@ cur = conn.cursor()
 for article in articles1:
     image = article.find("img")["src"]
     categories = article.find('a', attrs={'rel': 'category tag'})
+
     category = categories.text
     title1 = article.find("h3", class_="gridmag-grid-post-title")
     title = title1.text
@@ -37,6 +38,8 @@ for article in articles1:
 
                 )
     conn.commit()
+
+    print(new_post.category)
 
 cur.close()
 conn.close()

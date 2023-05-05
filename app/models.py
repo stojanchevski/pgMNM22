@@ -27,7 +27,21 @@ class Article(models.Model):
         return self.title
 
 
+
+
+
 class Post(models.Model):
+    title1 = models.TextField(max_length=1000)
+    link = models.TextField()
+    image_link = models.TextField()
+    category = models.TextField(max_length=1000)
+    short_content = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.title1
+
+
+class PostDE(models.Model):
     title1 = models.TextField(max_length=1000)
     link = models.TextField()
     image_link = models.TextField()
