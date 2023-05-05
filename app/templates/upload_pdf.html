@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+      <h2>Upload a PDF file</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button href="upload_pdf.html">Upload</button>
+  </form>
+
+  <hr>
+
+  <h2>PDF files</h2>
+  <ul>
+    {% for pdf_file in pdf_files %}
+      <li><a href="{{ pdf_file.file.url }}" target="_blank">{{ pdf_file.title }}</a></li>
+    {% empty %}
+      <li>No PDF files found.</li>
+    {% endfor %}
+  </ul>
+
+</head>
+<body>
+
+</body>
+</html>

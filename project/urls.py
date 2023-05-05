@@ -15,10 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from app.views import index, upload_pdf
+from django.views.static import serve
+from django.conf import settings
 from django.urls import path
-from app.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index,name="index"),
+    path('', index, name="index"),
+    path('upload_pdf/', upload_pdf, name='upload_pdf/'),
+    path('pdf_files/<path:pdf_path>/', serve, {'document_root': settings.MEDIA_ROOT}),
 ]

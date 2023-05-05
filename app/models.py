@@ -17,11 +17,30 @@ class MyModel(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.TextField(max_length=1000)
     link = models.URLField()
     image_link = models.URLField()
-    category = models.CharField(max_length=200)
-    short_content = models.CharField()
+    category = models.TextField(max_length=1000)
+    short_content = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.title
+
+
+class Post(models.Model):
+    title1 = models.TextField(max_length=1000)
+    link = models.TextField()
+    image_link = models.TextField()
+    category = models.TextField(max_length=1000)
+    short_content = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.title1
+
+
+class PdfFile(models.Model):
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to='pdf_files')
 
     def __str__(self):
         return self.title
