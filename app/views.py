@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import MyModel, Post, PdfFile
+from .models import MyModel, Post, PdfFile, PostDE
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .forms import PdfFileForm
+from .index_post_generator import all_data
 
 
 # Create your views here.
@@ -13,9 +14,10 @@ from .forms import PdfFileForm
 #     }
 def index(request):
     posts = Post.objects.all()
+
     context = {
-        "posts": posts,
-        "featured_post": posts[0],
+        "posts": all_data,
+        "featured_post": all_data[0],
     }
 
     return render(request, "index.html", context)
