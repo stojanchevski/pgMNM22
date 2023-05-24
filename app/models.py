@@ -58,3 +58,11 @@ class PdfFile(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class FBTest(models.Model):
+    short_content = models.TextField()
+    time = models.TextField()
+
+    def __str__(self):
+        return self.short_content

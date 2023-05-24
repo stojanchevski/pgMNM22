@@ -32,12 +32,13 @@ for article in articles1:
     link = article.find("a")["href"]
     new_post = Post(title1=title, link=link, image_link=image, category=category, short_content=short_content)
     articles.append(new_post)
-    cur.execute(
-                    "INSERT INTO app_post (title1, link, image_link, category, short_content) VALUES (%s, %s, %s, %s, %s)",
-                        (new_post.title1, new_post.link, new_post.image_link, new_post.category, new_post.short_content)
+    if not (Post.objects.filter(title1=title, link=link).exists()):
+        cur.execute(
+                        "INSERT INTO app_post (title1, link, image_link, category, short_content) VALUES (%s, %s, %s, %s, %s)",
+                            (new_post.title1, new_post.link, new_post.image_link, new_post.category, new_post.short_content)
 
-                )
-    conn.commit()
+                    )
+        conn.commit()
 
     print(new_post.category)
 
