@@ -5,10 +5,10 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 from bs4 import BeautifulSoup
-from app.models import PostDE
+from app.models import PostENG
 import psycopg2
 
-response = requests.get("https://makedonien-geschichte.blogspot.com/")
+response = requests.get("https://history-from-macedonia.blogspot.com/")
 soup1 = BeautifulSoup(response.content, "html.parser")
 articles1 = soup1.find_all("div", class_="index-post")
 articles = []
@@ -28,20 +28,21 @@ for article in articles1:
     category = soup1.find('span', {'class': 'post-tag index-post-tag'}).text.strip()
     title = article.find("h2", class_="post-title").text.strip()
 
-    short_content = article.find("p").text.strip()
+    short_content = "Read more ..."
     link = article.find("a")["href"]
-    new_post = PostDE(title1=title, link=link, image_link=image, category=category, short_content=short_content)
+    new_post = PostENG(title1=title, link=link, image_link=image, category=category, short_content=short_content)
     articles.append(new_post)
-    if not(PostDE.objects.filter(title1=title, link=link).exists()):
+    if not(PostENG.objects.filter(title1=title, link=link).exists()):
         cur.execute(
-            "INSERT INTO app_postde (title1, link, image_link, category, short_content) VALUES (%s, %s, %s, %s, %s)",
+            "INSERT INTO app_posteng (title1, link, image_link, category, short_content) VALUES (%s, %s, %s, %s, %s)",
             (new_post.title1, new_post.link, new_post.image_link, new_post.category, new_post.short_content)
 
         )
         conn.commit()
 
-    print(new_post.category)
-    print(new_post.title1)
+for post in articles:
+    print(post.title1,post.category,post.link,"--",post.image_link,post.short_content)
+
 
 cur.close()
 conn.close()

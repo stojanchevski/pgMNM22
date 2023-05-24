@@ -1,30 +1,6 @@
 {% load static %}
+
 <!--<!DOCTYPE html>-->
-<style>
-
-    .card-text {
-        display: flex;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 100%;
-
-    }
-
-    .dark-red {
-        color: #8b0000; /* dark red color */
-    }
-
-    .card-title {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 100%;
-    }
-    body {
-
-    }
-</style>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,11 +13,18 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-        <link href="{% static 'css/newstyle.css' %}" rel="stylesheet" />
+
 
 </head>
 <body>
+<h1>Welcome to the Index Page</h1>
+    <ul>
+        {% for file in files %}
+            <li>
+                <a href="{{ file.file.url }}" target="_blank">{{ file.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 
 
   <div class="container">

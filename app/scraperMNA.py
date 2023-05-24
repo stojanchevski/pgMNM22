@@ -15,8 +15,8 @@ articles = []
 
 conn = psycopg2.connect(
     host="localhost",
-    database="mnm1",
-    user="test1",
+    database="mnm4",
+    user="test2",
     password="admin"
 )
 cur = conn.cursor()
@@ -27,8 +27,14 @@ for article in articles1:
 
     category = categories.text
     title1 = article.find("h3", class_="gridmag-grid-post-title")
-    title = title1.text
-    short_content = article.find("p").text
+    title = title1.text.strip()
+    short_content1 = article.find("p")
+    if short_content1 is not None :
+        short_content = short_content1.get_text()
+    else:
+        short_content = "test"
+
+    print(short_content)
     link = article.find("a")["href"]
     new_post = Post(title1=title, link=link, image_link=image, category=category, short_content=short_content)
     articles.append(new_post)
@@ -40,7 +46,7 @@ for article in articles1:
                     )
         conn.commit()
 
-    print(new_post.category)
+
 
 cur.close()
 conn.close()

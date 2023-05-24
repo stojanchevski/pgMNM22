@@ -54,7 +54,7 @@ class PostDE(models.Model):
 
 class PdfFile(models.Model):
     title = models.CharField(max_length=255)
-    file = models.FileField(upload_to='pdf_files')
+    file = models.FileField(upload_to='uploads/')
 
     def __str__(self):
         return self.title
@@ -66,3 +66,14 @@ class FBTest(models.Model):
 
     def __str__(self):
         return self.short_content
+
+
+class PostENG(models.Model):
+    title1 = models.TextField(max_length=1000)
+    link = models.TextField()
+    image_link = models.TextField()
+    category = models.TextField(max_length=1000)
+    short_content = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.title1
